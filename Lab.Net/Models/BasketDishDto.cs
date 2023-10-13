@@ -5,8 +5,9 @@ namespace Lab.Net.Models
     public class BasketDishDto
     {
         [Required(ErrorMessage = "The field is required.")]
-        [RegularExpression(@"^.*\S.*$", ErrorMessage = "The field cannot be empty or contain only white spaces.")]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
+        [Required]
+        [MinLength(1)]
         public string Name { get; set; }
         [Required]
         public double Price { get; set; }

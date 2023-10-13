@@ -10,15 +10,20 @@ namespace Lab.Net.Models
     public class OrderDto
     {
         [Required(ErrorMessage = "The field is required.")]
-        [RegularExpression(@"^.*\S.*$", ErrorMessage = "The field cannot be empty or contain only white spaces.")]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
+        [Required]
         [DataType(DataType.DateTime)]
         public string DeliveryTime { get; set; }
+        [Required]
         [DataType(DataType.DateTime)]
         public string OrderTime { get; set; }
+        [Required]
         public OrderStatus Status { get; set; }
+        [Required]
         public double Price { get; set; }
+        [Required]
         public List<BasketDishDto> Dishes { get; set; }
+        [Required]
         [MinLength(1)]
         public string Address { get; set; }
 
