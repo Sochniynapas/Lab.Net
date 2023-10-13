@@ -7,7 +7,7 @@ namespace Lab.Net.Models
     {
         [Required(ErrorMessage = "The field is required.")]
         [RegularExpression(@"^.*\S.*$", ErrorMessage = "The field cannot be empty or contain only white spaces.")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [MinLength(1)]
         public string Name { get; set; }
