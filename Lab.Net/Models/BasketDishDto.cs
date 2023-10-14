@@ -15,6 +15,6 @@ namespace Lab.Net.Models
         public double TotalPrice { get; set; }
         [Required]
         public int Amount { get; set; }
-        public string Image { get; set;}
+        public string? Image { get; set;}
     }
 }

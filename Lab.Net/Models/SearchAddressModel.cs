@@ -24,9 +24,9 @@
     {
         public int ObjectId { get; set; }
         public Guid ObjectGuide { get; set; }
-        public string Text { get; set; }
+        public string? Text { get; set; }
         public GarAddressLevel ObjectLevel { get; set; }
-        public string ObjectLevelText { get; set; }
+        public string? ObjectLevelText { get; set; }
 
 
 

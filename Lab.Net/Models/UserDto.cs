@@ -15,15 +15,15 @@ namespace Lab.Net.Models
         [MinLength(1)]
         public string FullName { get; set; }
         [DataType(DataType.DateTime)]
-        public string BirthDate { get; set; }
+        public string? BirthDate { get; set; }
         [Required]
         public Gender Gender { get; set; }
-        public Guid Address { get; set; }
+        public Guid? Address { get; set; }
         [EmailAddress]
         [Required]
         [MinLength(1)]
         public string Email { get; set; }
         [Phone]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
     }
 }
