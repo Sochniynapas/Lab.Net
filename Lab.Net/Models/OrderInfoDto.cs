@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lab.Net.Models
 {
@@ -8,7 +9,6 @@ namespace Lab.Net.Models
     public class OrderInfoDto
     {
         [Required(ErrorMessage = "The field is required.")]
-        
         public Guid Id { get; set; }
         [DataType(DataType.DateTime)]
         [Required]
