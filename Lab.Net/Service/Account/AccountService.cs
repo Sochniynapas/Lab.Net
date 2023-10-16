@@ -13,32 +13,23 @@ namespace Lab.Net.Service.Account
             this.db = db;
         }
 
-        //public string Login(LoginCredentials model)
-        //{
-        //    var userData = new LoginCredentials
-        //    {
-        //        Email = model.Email,
-        //        Password = model.Password
-        //    };
-        //}
+
 
         public string Registration(UserRegisterModel model)
         {
 
+            string password = BCrypt.Net.BCrypt.HashPassword(model.Password);
             var user = new UserRegisterModel
             {
                 FullName = model.FullName,
-                Password = model.Password,
+                Password = password,
                 Email = model.Email,
                 Address = model.Address,
                 BirthDate = model.BirthDate,
                 Gender = model.Gender,
-                PhoneNumber = model.PhoneNumber
-
-
-
+                PhoneNumber = model.PhoneNumber,
             };
-            var dataForUsers = new UserDto
+            var userDto = new UserDto
             {
                 FullName = user.FullName,
                 Password = user.Password,
@@ -46,16 +37,39 @@ namespace Lab.Net.Service.Account
                 Address = user.Address,
                 BirthDate = user.BirthDate,
                 Gender = user.Gender,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
             };
-
-            db.Users.Add(dataForUsers);
-
-
+            db.Users.Add(userDto);
             db.SaveChanges();
 
-            return "Юзер зарегистрирован";
+            return "";
         }
+        public string Login(LoginCredentials credentials)
+        {
+
+            var loginData = new LoginCredentials
+            {
+                
+                Password = credentials.Password,
+                Email = credentials.Email,
+               
+            };
+            var user = db.Users.FirstOrDefault(u => u.Email == loginData.Email);
+
+            if (user == null)
+            {
+                return "No users";
+            }
+
+            if(!BCrypt.Net.BCrypt.Verify(loginData.Password, user.Password))
+            {
+                return "Wrong password";
+            }
+
+
+            return "Authorized";
+        }
+
 
     }
 }

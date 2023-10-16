@@ -32,6 +32,12 @@ namespace Lab.Net.Controllers.User
             return Ok(accountService.Registration(model));
         }
 
+        [HttpPost("login")]
+        public IActionResult Login (LoginCredentials credentials)
+        {
+            return Ok(accountService.Login(credentials));
+        }
+
 
 
 
